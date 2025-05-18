@@ -1,0 +1,90 @@
+{% extends "global/Page.html" %}
+
+
+{% block title %}
+    <center><p>Round {{ player.round_number }} of 20: Voting Decision</p></center>
+{% endblock %}
+{{ include C.STYLE }}
+
+{% block content %}
+    <div style="background-color: #E9FBE5; padding: 30px; margin: 30px auto; max-width: 800px; border-radius: 15px; border: 2px solid #B6E2A1; box-shadow: 0 2px 10px rgba(0,0,0,0.05); font-family: 'Helvetica', sans-serif;">
+        <div style="margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">
+            <h4 style="color: #2C3E50; margin-bottom: 15px;">Round Information</h4>
+            <p>The government holds a <strong>{{ government_type }}</strong> preference and discloses the following verifiable information about the true state:</p><br><br>
+             <div style="margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">{{ disclosure }}</div>
+        </div>
+        
+
+        <div style="margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">
+            <h4 style="color: #2C3E50; margin-bottom: 15px;">Make Your Decision</h4>
+           {% formfields %}
+        </div>
+
+    </div>
+
+    <center>
+<button class="button" style="background-color: #4CAF50;">Next</button>
+</center>
+
+
+<br><br>
+
+
+       {% if history %}
+    <div style="margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">
+        <h4 style="color: #2C3E50; margin-bottom: 15px;">Previous Rounds Summary</h4>
+
+        <div style="overflow-x: auto;">
+            <table style="white-space: nowrap; font-size: 14px; border-collapse: collapse; text-align: center;">
+                <tr>
+                    <th style="text-align: left; padding-right: 8px;">Round:</th>
+                    {% for h in history %}
+                        <td style="padding: 4px 8px;">{{ h.round }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding-right: 8px;">Disclosure:</th>
+                    {% for h in history %}
+                        <td style="padding: 4px 8px;">{{ h.disclosure }}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th style="text-align: left; padding-right: 8px;">True_State:</th>
+                    {% for h in history %}
+                        <td style="padding: 4px 8px;">{{ h.true_state }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endif %}
+
+
+<div style="margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 10px; border: 1px solid #dee2e6;">
+    <h4 style="color: #2C3E50; margin-bottom: 15px;">Payoff Structure</h4>
+   <table style="width:100%; margin-top: 20px; border-collapse: collapse;">
+      <tr style="background-color: #B6E2A1;">
+          <th><center>State</center></th>
+          <th><center>Not Vote</center></th>
+          <th><center>Vote</center></th>
+      </tr>
+      <tr>
+          <td>Good</td>
+          <td>0</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>Bad</td>
+          <td>0</td>
+          <td>-1</td>
+      </tr>
+      <tr>
+          <td>Horrible</td>
+          <td>0</td>
+          <td>-3</td>
+      </tr>
+  </table>
+</div>
+
+
+{% endblock %}
