@@ -39,6 +39,3 @@ Each folder contains:
 
 - The full paper (PDF)
 - Code for simulation / analysis
-
-Example:
-
