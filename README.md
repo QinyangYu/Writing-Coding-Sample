@@ -1,7 +1,7 @@
 # Writing & Coding Samples – PhD Application 2025
 
-This repository contains 6 research samples submitted for the PhD application used to demonstrate my programming experience.
-They are from my graduate coursework, group project, or independent research.
+This repository contains six research samples submitted for my PhD application to demonstrate my programming experience. 
+They are drawn from my graduate coursework, group projects, and independent research.
 
 ---
 
