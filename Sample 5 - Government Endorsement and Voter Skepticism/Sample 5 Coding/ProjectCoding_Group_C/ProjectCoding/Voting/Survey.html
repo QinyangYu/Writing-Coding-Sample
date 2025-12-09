@@ -1,0 +1,170 @@
+{% extends "global/Page.html" %}
+
+{% block title %}
+    <center><p>Survey Questions</p></center>
+{% endblock %}
+
+{{ include C.STYLE }}
+
+{% block content %}
+<style>
+    .survey-box {
+        background-color: #E9FBE5;
+        padding: 30px;
+        margin: 30px auto;
+        max-width: 800px;
+        border-radius: 15px;
+        border: 2px solid #B6E2A1;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        font-family: 'Helvetica', sans-serif;
+    }
+
+    .section-heading {
+        color: #2C3E50;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .slider-block {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #dee2e6;
+        margin-bottom: 30px;
+    }
+
+    .slider-label {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #333;
+        text-align: left;
+    }
+
+    .slider-output {
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .belief-slider {
+        width: 100%;
+        height: 6px;
+        background-color: #ccc;
+        border-radius: 5px;
+        appearance: none;
+        outline: none;
+    }
+
+    .belief-slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        background: #4CAF50;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+    }
+
+    .form-section {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #dee2e6;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        font-weight: 500;
+        color: #2C3E50;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .submit-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin-top: 30px;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    }
+
+    .submit-button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<div class="survey-box">
+
+
+    <div class="form-section">
+        <h4 style="color: #2C3E50; margin-bottom: 15px;">Demographic Information</h4>
+
+        <div class="form-group">
+            {{ form.name.label }}
+            {{ form.name }}
+        </div>
+
+        <div class="form-group">
+            {{ form.age.label }}
+            {{ form.age }}
+        </div>
+
+        <div class="form-group">
+            {{ form.gender.label }}
+            {{ form.gender }}
+        </div>
+
+        <div class="form-group">
+            {{ form.nationality.label }}
+            {{ form.nationality }}
+        </div>
+
+        <div class="form-group">
+            {{ form.education.label }}
+            {{ form.education }}
+        </div>
+
+        <div class="form-group">
+            {{ form.employment_status.label }}
+            {{ form.employment_status }}
+        </div>
+
+        <div class="form-group">
+            {{ form.political_affiliation.label }}
+            {{ form.political_affiliation }}
+        </div>
+
+        <div class="form-group">
+            {{ form.trust_government.label }}
+            {{ form.trust_government }}
+        </div>
+    </div>
+
+    <center>
+        <button class="submit-button otree-btn-next">Next</button>
+    </center>
+</div>
+
+<script>
+    function setDataN() {
+        const slider = document.getElementById("myRange_N");
+        const value = parseInt(slider.value);
+        const complementary = 100 - value;
+
+        document.getElementById("demo_N").innerText = value;
+        document.getElementById("demo2_N").innerText = complementary;
+    }
+
+    window.onload = setDataN;
+</script>
+{% endblock %}
